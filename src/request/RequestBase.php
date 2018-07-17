@@ -1,11 +1,11 @@
 <?php
 
-namespace eth\driver;
+namespace eth\driver\request;
 
 use eth\driver\exception\EthWalletDriverException;
 use GuzzleHttp\Client;
 
-class Base
+class RequestBase
 {
 
     protected $config = [];
@@ -100,9 +100,6 @@ class Base
         $request_method = empty($request_method) ? $this->request_method : $request_method;
         $request_method = strtoupper($request_method) == 'POST' ? 'POST' : 'GET';
         $data = empty($data) ? $this->params : $data;
-        if (!array_key_exists('api_url', $config)) {
-            throw new \InvalidArgumentException('api_url not exists');
-        }
         $request_data = empty($data) ? ['form_params' => []] : ['form_params' => $data];
         $client = new Client(['base_uri' => $config['api_url']]);
         $response = $client->request($request_method, $uri, $request_data);
