@@ -11,8 +11,15 @@ namespace eth\driver\biz;
 
 use eth\driver\EthDriverResponse;
 
+/**
+ * Class Search
+ * @package eth\driver\biz
+ */
 class Search extends BizBase
 {
+    /**
+     * @return mixed
+     */
     public function info()
     {
         $result = $this->getRequest(__CLASS__, __FUNCTION__);
@@ -24,6 +31,10 @@ class Search extends BizBase
         }
     }
 
+    /**
+     * @param $txid
+     * @return mixed
+     */
     public function transactionReceipt($txid)
     {
         $result = $this->getRequest(__CLASS__, __FUNCTION__, ['txid' => $txid]);

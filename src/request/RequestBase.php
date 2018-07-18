@@ -100,8 +100,14 @@ class RequestBase
         $request_method = empty($request_method) ? $this->request_method : $request_method;
         $request_method = strtoupper($request_method) == 'POST' ? 'POST' : 'GET';
         $data = empty($data) ? $this->params : $data;
-        $request_data = empty($data) ? ['form_params' => []] : ['form_params' => $data];
+        $request_data = empty($data) ? ['json' => []] : ['json' => $data];
         $client = new Client(['base_uri' => $config['api_url']]);
+        if(defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')){
+            echo "request head:";
+            var_dump($request_method.': '.$config['api_url'].$uri);
+            echo "request body:";
+            var_dump($request_data);
+        }
         $response = $client->request($request_method, $uri, $request_data);
         $body = $response->getBody();
         $statusCode = $response->getStatusCode();
@@ -109,6 +115,12 @@ class RequestBase
             throw new EthWalletDriverException("response code ($statusCode) not eq 200 ", $response);
         }
         $content = $body->getContents();
+        if(defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')){
+            echo "response code:";
+            var_dump($statusCode);
+            echo "response content:";
+            var_dump($content);
+        }
         return json_decode($content, true);
     }
 }
