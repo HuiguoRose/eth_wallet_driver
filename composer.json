@@ -1,22 +1,22 @@
 {
-    "name": "tears/eth_wallet_driver",
-    "license": "MIT",
-    "type": "library",
-    "description": "",
-    "authors": [
-        {
-            "name": "Tears",
-            "email": "i@ltteam.cn"
-        }
-    ],
-
-    "require": {
-        "php": ">=7.0.0",
-        "guzzlehttp/guzzle": "^6.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "eth\\driver\\": "src/"
-        }
+  "name": "tears/eth_wallet_driver",
+  "license": "MIT",
+  "type": "library",
+  "description": "",
+  "authors": [
+    {
+      "name": "Tears",
+      "email": "i@ltteam.cn"
     }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "~6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "eth\\driver\\": "src/"
+    }
+  }
 }
