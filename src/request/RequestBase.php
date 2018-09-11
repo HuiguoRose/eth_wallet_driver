@@ -4,6 +4,7 @@ namespace eth\driver\request;
 
 use eth\driver\exception\EthWalletDriverException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class RequestBase
 {
@@ -27,7 +28,8 @@ class RequestBase
     }
 
     /**
-     * @param array $config
+     * @param $k
+     * @param $v
      */
     public function setConfig($k, $v)
     {
@@ -102,20 +104,24 @@ class RequestBase
         $data = empty($data) ? $this->params : $data;
         $request_data = empty($data) ? ['json' => []] : ['json' => $data];
         $client = new Client(['base_uri' => $config['api_url']]);
-        if(defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')){
+        if (defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')) {
             echo "request head:";
-            var_dump($request_method.': '.$config['api_url'].$uri);
+            var_dump($request_method . ': ' . $config['api_url'] . $uri);
             echo "request body:";
-            var_dump($request_data);
+            var_dump(json_encode($request_data));
         }
-        $response = $client->request($request_method, $uri, $request_data);
+        try {
+            $response = $client->request($request_method, $uri, $request_data);
+        } catch (GuzzleException $e) {
+            throw new EthWalletDriverException("request error: " . $e->getMessage(), []);
+        }
         $body = $response->getBody();
         $statusCode = $response->getStatusCode();
         if ($statusCode != 200) {
             throw new EthWalletDriverException("response code ($statusCode) not eq 200 ", $response);
         }
         $content = $body->getContents();
-        if(defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')){
+        if (defined('ETH_WALLET_DRIVER_REQUEST_DEBUG')) {
             echo "response code:";
             var_dump($statusCode);
             echo "response content:";

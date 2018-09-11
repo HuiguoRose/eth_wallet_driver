@@ -12,12 +12,14 @@ namespace eth\driver\biz;
 use eth\driver\EthDriverResponse;
 
 /**
+ * 查询业务类
  * Class Search
  * @package eth\driver\biz
  */
 class Search extends BizBase
 {
     /**
+     * 获取系统运行状态
      * @return mixed
      */
     public function info()
@@ -32,6 +34,7 @@ class Search extends BizBase
     }
 
     /**
+     * 查询指定txid的交易情况
      * @param $txid
      * @return mixed
      */

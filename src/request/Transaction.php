@@ -9,9 +9,15 @@
 namespace eth\driver\request;
 
 
+/**
+ * 交易请求类
+ * Class Transaction
+ * @package eth\driver\request
+ */
 class Transaction extends RequestBase
 {
     /**
+     * 转出代币到指定地址
      * @param $to_address
      * @param $amount
      * @param $from_address
@@ -26,6 +32,7 @@ class Transaction extends RequestBase
     }
 
     /**
+     * 转出ETH到指定地址
      * @param $to_address
      * @param $amount
      * @param $from_address
@@ -37,7 +44,6 @@ class Transaction extends RequestBase
         return $this->request("/eth/transfer", 'POST',
             ['to_address' => $to_address, 'amount' => $amount, 'from_address' => $from_address]);
     }
-
 
 
 }

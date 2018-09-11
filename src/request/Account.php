@@ -9,9 +9,9 @@
 namespace eth\driver\request;
 
 
-use eth\driver\EthDriverResponse;
 
 /**
+ * 账户请求类
  * Class Account
  * @package eth\driver\request
  */
@@ -19,6 +19,7 @@ class Account extends RequestBase
 {
 
     /**
+     * 生成新钱包地址
      * @throws \eth\driver\exception\EthWalletDriverException
      */
     public function new()
@@ -27,6 +28,7 @@ class Account extends RequestBase
     }
 
     /**
+     * 验证是否是本地地址
      * @param $address
      * @return bool
      * @throws \eth\driver\exception\EthWalletDriverException
@@ -37,6 +39,7 @@ class Account extends RequestBase
     }
 
     /**
+     * 导出私钥
      * @param $address
      * @return bool
      * @throws \eth\driver\exception\EthWalletDriverException
@@ -47,6 +50,7 @@ class Account extends RequestBase
     }
 
     /**
+     * 导入私钥
      * @param $private_key
      * @return bool
      * @throws \eth\driver\exception\EthWalletDriverException
@@ -57,6 +61,7 @@ class Account extends RequestBase
     }
 
     /**
+     * 查询ETH余额
      * @param $address
      * @return bool
      * @throws \eth\driver\exception\EthWalletDriverException
@@ -67,6 +72,7 @@ class Account extends RequestBase
     }
 
     /**
+     * 查询代币余额
      * @param $address
      * @param $token_address
      * @return bool

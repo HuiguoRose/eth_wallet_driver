@@ -12,6 +12,7 @@ namespace eth\driver\biz;
 use eth\driver\EthDriverResponse;
 
 /**
+ * 账户业务类
  * Class Account
  * @package eth\driver\biz
  */
@@ -19,6 +20,7 @@ class Account extends BizBase
 {
 
     /**
+     * 生成新钱包地址
      * @return bool|string
      */
     public function new()
@@ -34,6 +36,7 @@ class Account extends BizBase
     }
 
     /**
+     * 验证是否是本地地址
      * @param $address
      * @return bool
      */
@@ -49,6 +52,7 @@ class Account extends BizBase
     }
 
     /**
+     * 导出私钥
      * @param $address
      * @return mixed
      */
@@ -64,6 +68,7 @@ class Account extends BizBase
     }
 
     /**
+     * 导入私钥
      * @param $private_key
      * @return bool|string
      */
@@ -79,6 +84,7 @@ class Account extends BizBase
     }
 
     /**
+     * 查询ETH余额
      * @param $address
      * @return bool|int
      */
@@ -94,6 +100,7 @@ class Account extends BizBase
     }
 
     /**
+     * 查询代币余额
      * @param $address
      * @param $token_address
      * @return bool|int

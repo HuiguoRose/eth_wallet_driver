@@ -11,8 +11,21 @@ namespace eth\driver\biz;
 
 use eth\driver\EthDriverResponse;
 
+/**
+ * 交易业务类
+ * Class Transaction
+ * @package eth\driver\biz
+ */
 class Transaction extends BizBase
 {
+    /**
+     * 转出代币到指定地址
+     * @param $to_address
+     * @param $amount
+     * @param string $from_address
+     * @param string $token_address
+     * @return bool
+     */
     public function transfer_token($to_address, $amount, $from_address = '', $token_address = '')
     {
         $from_address = empty($from_address) ? empty($this->option['main_address']) ? '' : $this->option['main_address'] : $from_address;
@@ -31,6 +44,13 @@ class Transaction extends BizBase
         }
     }
 
+    /**
+     * 转出ETH到指定地址
+     * @param $to_address
+     * @param $amount
+     * @param string $from_address
+     * @return bool
+     */
     public function transfer($to_address, $amount, $from_address = '')
     {
         $from_address = empty($from_address) ? empty($this->option['main_address']) ? '' : $this->option['main_address'] : $from_address;

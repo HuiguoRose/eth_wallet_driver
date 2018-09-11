@@ -9,10 +9,23 @@
 namespace eth\driver\exception;
 
 
+/**
+ * 异常处理
+ * Class EthWalletDriverException
+ * @package eth\driver\exception
+ */
 class EthWalletDriverException extends \Exception
 {
+    /**
+     * @var
+     */
     protected $data;
 
+    /**
+     * EthWalletDriverException constructor.
+     * @param $msg
+     * @param $data
+     */
     public function __construct($msg, $data)
     {
         $this->data = $data;
