@@ -23,7 +23,7 @@ class Account extends BizBase
      * 生成新钱包地址
      * @return bool|string
      */
-    public function new()
+    public function newAddress()
     {
         $result = $this->getRequest(__CLASS__, __FUNCTION__);
         $resp = EthDriverResponse::buildResponse($result);

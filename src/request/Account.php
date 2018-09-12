@@ -22,7 +22,7 @@ class Account extends RequestBase
      * 生成新钱包地址
      * @throws \eth\driver\exception\EthWalletDriverException
      */
-    public function new()
+    public function newAddress()
     {
         return $this->request('/eth/account/new', 'POST');
     }

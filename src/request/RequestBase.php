@@ -6,14 +6,34 @@ use eth\driver\exception\EthWalletDriverException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
+/**
+ * Class RequestBase
+ * @package eth\driver\request
+ */
 class RequestBase
 {
 
+    /**
+     * @var array
+     */
     protected $config = [];
+    /**
+     * @var array
+     */
     protected $params = [];
+    /**
+     * @var string
+     */
     protected $request_method = 'GET';
+    /**
+     * @var string
+     */
     protected $uri = '';
 
+    /**
+     * RequestBase constructor.
+     * @param array $config
+     */
     public function __construct(array $config = [])
     {
         $this->config = $config;
@@ -22,7 +42,7 @@ class RequestBase
     /**
      * @return array
      */
-    public function getConfig(): array
+    public function getConfig()
     {
         return $this->config;
     }
@@ -57,7 +77,7 @@ class RequestBase
     /**
      * @return string
      */
-    public function getRequestMethod(): string
+    public function getRequestMethod()
     {
         return $this->request_method;
     }
@@ -65,7 +85,7 @@ class RequestBase
     /**
      * @param string $request_method
      */
-    public function setRequestMethod(string $request_method)
+    public function setRequestMethod($request_method)
     {
         $this->request_method = $request_method;
     }
@@ -73,7 +93,7 @@ class RequestBase
     /**
      * @return string
      */
-    public function getUri(): string
+    public function getUri()
     {
         return $this->uri;
     }
@@ -81,7 +101,7 @@ class RequestBase
     /**
      * @param string $uri
      */
-    public function setUri(string $uri)
+    public function setUri($uri)
     {
         $this->uri = $uri;
     }

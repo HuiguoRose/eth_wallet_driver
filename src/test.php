@@ -66,7 +66,7 @@ $config['token_address'] = '0xb3779f0a451b1558c52e11d187643440eda83b7e'; // 操�
 //bool(false)
 //$address = "0x78ed5daa2d9782f2ab05201e9c7dd22ea73903c2";
 //$address = "0x686bda3c1f3ae481577685a4f6f6cf17990a8d1d";
-$address = "0xe39a0f652d1d5815cd238d726230a4df51de2db1";
+//$address = "0xe39a0f652d1d5815cd238d726230a4df51de2db1";
 //var_dump($account->isLocal($address));
 
 //导出私钥 (本地地址 非本地地址返回false)

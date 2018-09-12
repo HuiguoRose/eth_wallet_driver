@@ -14,6 +14,7 @@ use eth\driver\biz\Search;
 use eth\driver\biz\Transaction;
 
 /**
+ * 基类
  * Class Api
  * @package eth\driver
  */
