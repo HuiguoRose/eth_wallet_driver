@@ -59,7 +59,7 @@ $config['token_address'] = '0xb3779f0a451b1558c52e11d187643440eda83b7e'; // 操�
 
 // 生成新钱包地址
 // 0x028d392d0b3a59338aa79fc0400ae63d5f84b37e
-//$address = $account->new();
+//$address = $account->newAddress();
 //var_dump($address);
 
 // 是否是本地地址
