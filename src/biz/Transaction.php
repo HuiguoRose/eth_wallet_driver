@@ -66,4 +66,22 @@ class Transaction extends BizBase
             return $resp->getData()['tx_hash'];
         }
     }
+
+    /**
+     * 获取转账预估手续费
+     * @param $to_address
+     * @return bool
+     */
+    public function suggest_gas($to_address)
+    {
+        $result = $this->getRequest(__CLASS__, __FUNCTION__, [
+            'to_address' => $to_address
+        ]);
+        $resp = EthDriverResponse::buildResponse($result);
+        if ($resp->getError() || !isset($resp->getData()['suggest_gas'])) {
+            return false;
+        } else {
+            return $resp->getData()['suggest_gas'];
+        }
+    }
 }

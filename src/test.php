@@ -16,12 +16,13 @@ require '../vendor/autoload.php';
 
 //define('ETH_WALLET_DRIVER_REQUEST_DEBUG',true); // 网络请求调试模式
 
-$config['api_url'] = 'http://47.92.113.111:8080';  // 接口URL
-$config['main_address'] = '0x9778ca61fc2806fad59bcd177de71b0071c0481b';  // 主钱包地址
-$config['token_address'] = '0xb3779f0a451b1558c52e11d187643440eda83b7e'; // 操作的token地址
+$config['api_url'] = 'http://127.0.0.1:8080';  // 接口URL
+$config['main_address'] = '0x3617f02E528E458d18127a25b8b660369F5CF12D';  // 主钱包地址
+$config['token_address'] = '0x13f5faec914f92f987c9ba735ffeb093a2d13b9e'; // 操作的token地址
 
 // 查询类
-//$search = Api::getSearch($config);
+echo "--------查询类--------", PHP_EOL;
+$search = Api::getSearch($config);
 
 /*
  * 获取系统运行状态
@@ -37,8 +38,9 @@ $config['token_address'] = '0xb3779f0a451b1558c52e11d187643440eda83b7e'; // 操�
 }
 
  */
-//$info=$search->info();
-//var_dump($info);
+echo "1.查询系统运行状态", PHP_EOL;
+$info = $search->info();
+var_dump($info);
 
 
 /*
@@ -50,53 +52,71 @@ $config['token_address'] = '0xb3779f0a451b1558c52e11d187643440eda83b7e'; // 操�
   bool(false) 是否交易成功
 }
  */
-//$txid="0x80d2698813df6be1808258e266cd4a3e813d44d6b278c38db639fbe445f9dc10";
-//var_dump($search->transactionReceipt($txid));
+echo "2.查询交易结果", PHP_EOL;
+$txid = "0x80d2698813df6be1808258e266cd4a3e813d44d6b278c38db639fbe445f9dc10";
+var_dump($search->transactionReceipt($txid));
 
 
 //账户类
-//$account = Api::getAccount($config);
+echo "--------账户类--------", PHP_EOL;
+
+$account = Api::getAccount($config);
 
 // 生成新钱包地址
 // 0x028d392d0b3a59338aa79fc0400ae63d5f84b37e
-//$address = $account->newAddress();
-//var_dump($address);
+echo "1.生成新钱包地址", PHP_EOL;
+$address = $account->newAddress();
+var_dump($address);
 
 // 是否是本地地址
 //bool(false)
 //$address = "0x78ed5daa2d9782f2ab05201e9c7dd22ea73903c2";
 //$address = "0x686bda3c1f3ae481577685a4f6f6cf17990a8d1d";
+echo "2.验证是否是本地地址", PHP_EOL;
 //$address = "0xe39a0f652d1d5815cd238d726230a4df51de2db1";
-//var_dump($account->isLocal($address));
+var_dump($account->isLocal($address));
 
 //导出私钥 (本地地址 非本地地址返回false)
 //string(64) "282b23ee04752c49ebad4dc6dafc113b177f8f40d60b3c9899c5a3d83433128d"
-//$private_key=$account->export($address);
-//var_dump($private_key);
+echo "3.导出私钥", PHP_EOL;
+$private_key = $account->export($address);
+var_dump($private_key);
 
 // 导入私钥 (已存在返回false)
 // bool(false)
 //$private_key="282b23ee04752c49ebad4dc6dafc113b177f8f40d60b3c9899c5a3d83433128d"; //0x686BDa3C1F3Ae481577685A4F6F6CF17990A8d1d
-//var_dump($account->import($private_key));
+echo "4.导入私钥(已存在返回false)", PHP_EOL;
+var_dump($account->import($private_key));
 
 // 查询ETH余额 (所有地址)
 //string(1) "1"
-//var_dump($account->balance($address));
+echo "5.查询ETH余额(任意地址)", PHP_EOL;
+var_dump($account->balance($address));
 
 //查询代币余额
 //string(1) "1"
-//var_dump($account->balance_token($address));
+echo "6.查询代币余额(任意地址)", PHP_EOL;
+var_dump($account->balance_token($address));
 
 // 交易类
-//$transaction = Api::getTransaction($config);
+echo "--------交易类--------", PHP_EOL;
+$transaction = Api::getTransaction($config);
 
 //转出代币到指定地址
 //string(66) "0xa335920fb1d1e3745b471966ebbbe8a32d1d11a508745c8f0a11faa8fa87441c"
-//$txid = $transaction->transfer_token($address, 0.00001);
-//var_dump($txid);
+echo "1.转出代币到指定地址(任意地址)", PHP_EOL;
+$txid = $transaction->transfer_token($address, 100);
+var_dump($txid);
 
 //转出ETH到指定地址
 //string(66) "0x17c915a65953eb656b1d68b2269889523f6892eb62e1de0cf461d1d082510e21"
-//$txid=$transaction->transfer($address,0.001); // 到账数量问题
-//var_dump($txid);
+echo "2.转出代币到指定地址(任意地址)", PHP_EOL;
+$txid = $transaction->transfer($address, 0.000001); // 到账数量问题
+var_dump($txid);
+
+// 获取预估转账价格
+//string(8) "0.000336"
+echo "4.获取预估转账价格", PHP_EOL;
+$to_address = "0x0B52803D901EE93B61558Fd76C2C007925380205";// 目标钱包地址
+var_dump($transaction->suggest_gas($to_address));
 

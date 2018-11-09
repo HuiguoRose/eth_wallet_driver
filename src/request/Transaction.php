@@ -45,5 +45,17 @@ class Transaction extends RequestBase
             ['to_address' => $to_address, 'amount' => $amount, 'from_address' => $from_address]);
     }
 
+    /**
+     * 获取转账预估手续费
+     * @param $to_address
+     * @return bool
+     * @throws \eth\driver\exception\EthWalletDriverException
+     */
+    public function suggest_gas($to_address)
+    {
+        return $this->request("/eth/suggest_gas", 'POST',
+            ['to_address' => $to_address]);
+    }
+
 
 }
