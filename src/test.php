@@ -56,6 +56,10 @@ echo "2.查询交易结果", PHP_EOL;
 $txid = "0x80d2698813df6be1808258e266cd4a3e813d44d6b278c38db639fbe445f9dc10";
 var_dump($search->transactionReceipt($txid));
 
+echo "3.查询交易详情", PHP_EOL;
+$txid = "0x80d2698813df6be1808258e266cd4a3e813d44d6b278c38db639fbe445f9dc10";
+var_dump($search->transaction($txid));
+
 
 //账户类
 echo "--------账户类--------", PHP_EOL;

@@ -9,6 +9,8 @@
 namespace eth\driver\request;
 
 
+use eth\driver\exception\EthWalletDriverException;
+
 /**
  * 交易请求类
  * Class Transaction
@@ -23,7 +25,7 @@ class Transaction extends RequestBase
      * @param $from_address
      * @param $token_address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function transfer_token($to_address, $amount, $from_address, $token_address)
     {
@@ -37,7 +39,7 @@ class Transaction extends RequestBase
      * @param $amount
      * @param $from_address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function transfer($to_address, $amount, $from_address)
     {
@@ -49,7 +51,7 @@ class Transaction extends RequestBase
      * 获取转账预估手续费
      * @param $to_address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function suggest_gas($to_address)
     {

@@ -10,6 +10,8 @@ namespace eth\driver\request;
 
 
 
+use eth\driver\exception\EthWalletDriverException;
+
 /**
  * 账户请求类
  * Class Account
@@ -20,7 +22,7 @@ class Account extends RequestBase
 
     /**
      * 生成新钱包地址
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function newAddress()
     {
@@ -31,7 +33,7 @@ class Account extends RequestBase
      * 验证是否是本地地址
      * @param $address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function isLocal($address)
     {
@@ -42,7 +44,7 @@ class Account extends RequestBase
      * 导出私钥
      * @param $address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function export($address)
     {
@@ -53,7 +55,7 @@ class Account extends RequestBase
      * 导入私钥
      * @param $private_key
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function import($private_key)
     {
@@ -64,7 +66,7 @@ class Account extends RequestBase
      * 查询ETH余额
      * @param $address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function balance($address)
     {
@@ -76,7 +78,7 @@ class Account extends RequestBase
      * @param $address
      * @param $token_address
      * @return bool
-     * @throws \eth\driver\exception\EthWalletDriverException
+     * @throws EthWalletDriverException
      */
     public function balance_token($address,$token_address)
     {

@@ -9,6 +9,8 @@
 namespace eth\driver\biz;
 
 
+use InvalidArgumentException;
+
 /**
  * Class BizBase
  * @package eth\driver\biz
@@ -36,8 +38,8 @@ class BizBase
          * main_address
          * token_address
          */
-        if (!array_key_exists('api_url', $option)) {
-            throw new \InvalidArgumentException('api_url not exists');
+        if ( ! array_key_exists('api_url', $option)) {
+            throw new InvalidArgumentException('api_url not exists');
         }
         $this->option = $option;
     }

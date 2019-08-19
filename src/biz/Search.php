@@ -49,4 +49,21 @@ class Search extends BizBase
         }
 
     }
+
+    /**
+     * 查询指定txid的交易详情
+     * @param $txid
+     * @return mixed
+     */
+    public function transaction($txid)
+    {
+        $result = $this->getRequest(__CLASS__, __FUNCTION__, ['txid' => $txid]);
+        $resp = EthDriverResponse::buildResponse($result);
+        if ($resp->getError() || empty($resp->getData())) {
+            return false;
+        } else {
+            return $resp->getData();
+        }
+
+    }
 }
