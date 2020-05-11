@@ -49,4 +49,17 @@ class Search extends RequestBase
     }
 
 
+    /**
+     * 查询指定token的TotalSupply
+     * @param $token_address
+     * @return bool
+     * @throws EthWalletDriverException
+     */
+    public function tokenTotalSupply($token_address)
+    {
+        return $this->request("/eth/token/$token_address/total_supply", 'POST',
+            []);
+    }
+
+
 }

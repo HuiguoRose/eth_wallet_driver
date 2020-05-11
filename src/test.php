@@ -18,7 +18,7 @@ require '../vendor/autoload.php';
 
 $config['api_url'] = 'http://127.0.0.1:8080';  // 接口URL
 $config['main_address'] = '0x3617f02E528E458d18127a25b8b660369F5CF12D';  // 主钱包地址
-$config['token_address'] = '0x13f5faec914f92f987c9ba735ffeb093a2d13b9e'; // 操作的token地址
+$config['token_address'] = '0x2df1a3161e40dddcb77ed6b7c3ff1bd2cda6ec33'; // 操作的token地址
 
 // 查询类
 echo "--------查询类--------", PHP_EOL;
@@ -60,6 +60,8 @@ echo "3.查询交易详情", PHP_EOL;
 $txid = "0x80d2698813df6be1808258e266cd4a3e813d44d6b278c38db639fbe445f9dc10";
 var_dump($search->transaction($txid));
 
+echo "4.查询指定token的TotalSupply", PHP_EOL;
+var_dump($search->tokenTotalSupply($config['token_address']));
 
 //账户类
 echo "--------账户类--------", PHP_EOL;
@@ -123,4 +125,3 @@ var_dump($txid);
 echo "4.获取预估转账价格", PHP_EOL;
 $to_address = "0x0B52803D901EE93B61558Fd76C2C007925380205";// 目标钱包地址
 var_dump($transaction->suggest_gas($to_address));
-

@@ -66,4 +66,22 @@ class Search extends BizBase
         }
 
     }
+
+
+    /**
+     * 查询指定token的TotalSupply
+     * @param $tokenAddress
+     * @return mixed
+     */
+    public function tokenTotalSupply($tokenAddress)
+    {
+        $result = $this->getRequest(__CLASS__, __FUNCTION__, ['tokenAddress' => $tokenAddress]);
+        $resp = EthDriverResponse::buildResponse($result);
+        if ($resp->getError() || empty($resp->getData())) {
+            return false;
+        } else {
+            return $resp->getData();
+        }
+
+    }
 }
